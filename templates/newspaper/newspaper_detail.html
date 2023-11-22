@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2 class="pb-3 mb-4 font-italic border-bottom">{{ newspaper.topic.name }}</h2>
+  <h1 class="blog-post-title"></h1>
+  <div class="blog-post">
+    <h2 class="blog-post-title">{{ newspaper.title }}</h2>
+    <p class="blog-post-meta">{{ newspaper.published_date }} by
+        {% for publisher in newspaper.publishers.all %}
+          <a href="#"> {{ publisher.username }}</a>,
+        {% endfor %}
+    </p>
+
+    <p>{{ newspaper.content }}</p>
+  </div>
+{% endblock %}
