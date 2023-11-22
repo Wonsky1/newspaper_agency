@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 
 from newspaper.models import Newspaper, Redactor, Topic
@@ -22,3 +23,19 @@ class RedactorListView(generic.ListView):
 class TopicListView(generic.ListView):
     model = Topic
 
+
+class TopicCreateView(generic.CreateView):
+    model = Topic
+    fields = "__all__"
+    success_url = reverse_lazy("newspaper:topic-list")
+
+
+class TopicUpdateView(generic.UpdateView):
+    model = Topic
+    fields = "__all__"
+    success_url = reverse_lazy("newspaper:topic-list")
+
+
+class TopicDeleteView(generic.DeleteView):
+    model = Topic
+    success_url = reverse_lazy("newspaper:topic-list")

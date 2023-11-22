@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Delete topic {{ topic.name }}?</h1>
+  <p>If you delete this topic, all articles related to it will be deleted too!</p>
+  <form action="" method="post">
+    {% csrf_token %}
+
+    <input type="submit" value="Yes" class="btn btn-danger">
+    <a href="{% url 'newspaper:topic-list' %}" class="btn btn-secondary">Cancel</a>
+
+  </form>
+{% endblock %}
