@@ -15,10 +15,18 @@ class NewspaperDetailView(generic.DetailView):
     model = Newspaper
 
 
+class NewspaperDeleteView(generic.DeleteView):
+    model = Newspaper
+
+
 class RedactorListView(generic.ListView):
     model = Redactor
     paginate_by = 10
 
+
+class RedactorDeleteView(generic.DeleteView):
+    model = Redactor
+    success_url = reverse_lazy("newspaper:redactor-list")
 
 class TopicListView(generic.ListView):
     model = Topic
