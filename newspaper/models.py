@@ -10,7 +10,7 @@ class Topic(models.Model):
 
 
 class Redactor(AbstractUser):
-    years_of_experience = models.IntegerField()
+    years_of_experience = models.IntegerField(default=0)
 
     def __str__(self) -> str:
         return self.username
