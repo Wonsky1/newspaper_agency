@@ -2,6 +2,15 @@
     font-family: "Playfair Display", Georgia, "Times New Roman", serif;
     font-size: 2.25rem;
 }
+
 .log-btn {
     margin-left: 5px;
+}
+
+.blog-footer {
+    padding: 2.5rem 0;
+    color: #999;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: 0.05rem solid #e5e5e5;
 }
