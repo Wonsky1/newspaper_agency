@@ -12,6 +12,10 @@ class Topic(models.Model):
 class Redactor(AbstractUser):
     years_of_experience = models.IntegerField(default=0)
 
+    class Meta:
+        verbose_name = "redactor"
+        verbose_name_plural = "redactors"
+
     def __str__(self) -> str:
         return self.username
 
@@ -23,5 +27,8 @@ class Newspaper(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     publishers = models.ManyToManyField(Redactor)
 
+    class Meta:
+        ordering = ("published_date", )
+
     def __str__(self) -> str:
-        return f"{self.title} ({self.topic.name})"
+        return self.title
