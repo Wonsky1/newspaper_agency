@@ -23,3 +23,17 @@ header {
 nav {
     padding-bottom: 30px;
 }
+
+body {
+    display: flex;
+    min-height: 100dvh;
+    flex-direction: column;
+}
+
+.container {
+    flex-grow: 1;
+}
+
+.form-inline {
+    margin-bottom: 10px;
+}
