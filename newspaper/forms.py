@@ -34,7 +34,7 @@ class RedactorUpdateForm(forms.ModelForm):
 
 def cleaned_years_of_experience(years_of_experience) -> int:
     if years_of_experience < 0:
-        raise ValidationError("Years of experience must be greater or equal then 0")
+        raise ValidationError("Years of experience must be greater or equal than 0")
     if years_of_experience > 100:
         raise ValidationError("Please, provide correct data")
     return years_of_experience
