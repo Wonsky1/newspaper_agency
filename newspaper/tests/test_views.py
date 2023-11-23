@@ -5,7 +5,6 @@ from newspaper.models import Newspaper, Topic
 
 
 class PublicNewspaperTests(TestCase):
-
     def setUp(self) -> None:
         topic = Topic.objects.create(name="testT")
         self.newspaper = Newspaper.objects.create(
@@ -24,7 +23,7 @@ class PublicNewspaperTests(TestCase):
             reverse("newspaper:newspaper-detail", args=[self.newspaper.id]),
             reverse("newspaper:newspaper-update", args=[self.newspaper.id]),
             reverse("newspaper:newspaper-delete", args=[self.newspaper.id]),
-            reverse("newspaper:newspaper-create")
+            reverse("newspaper:newspaper-create"),
         ]
         for url in urls:
             response = self.client.get(url)
@@ -34,15 +33,13 @@ class PublicNewspaperTests(TestCase):
 class PrivateNewspaperTests(TestCase):
     def setUp(self):
         self.user = get_user_model().objects.create_user(
-            username="testuser",
-            password="testpassword"
+            username="testuser", password="testpassword"
         )
         self.client.force_login(self.user)
 
         self.topic = Topic.objects.create(name="Test Topic")
         self.newspaper = Newspaper.objects.create(
-            title="Test Newspaper",
-            topic=self.topic
+            title="Test Newspaper", topic=self.topic
         )
 
     def test_newspaper_list_view(self):
@@ -151,18 +148,17 @@ class TopicTests(TestCase):
         topics = Topic.objects.all()
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(
-            list(response.context["topic_list"]),
-            list(topics)
-        )
+        self.assertEqual(list(response.context["topic_list"]), list(topics))
         self.assertTemplateUsed(response, "newspaper/topic_list.html")
 
     def test_topic_list_search(self):
         Topic.objects.create(name="test_topic")
         Topic.objects.create(name="Science")
-        response = self.client.get(reverse("newspaper:topic-list"), {"name": "test_topic"})
+        response = self.client.get(
+            reverse("newspaper:topic-list"), {"name": "test_topic"}
+        )
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
             list(response.context["topic_list"]),
-            list(Topic.objects.filter(name="test_topic"))
+            list(Topic.objects.filter(name="test_topic")),
         )

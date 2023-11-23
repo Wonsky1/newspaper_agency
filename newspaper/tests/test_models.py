@@ -28,9 +28,7 @@ class ModelTests(TestCase):
     def test_create_redactor_with_years_of_experience(self):
         expected = 2
         redactor = get_user_model().objects.create_user(
-            username="test3214",
-            password="test",
-            years_of_experience=expected
+            username="test3214", password="test", years_of_experience=expected
         )
         self.assertEqual(redactor.years_of_experience, expected)
 

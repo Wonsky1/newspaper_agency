@@ -9,14 +9,11 @@ class AdminSiteTests(TestCase):
     def setUp(self) -> None:
         self.client = Client()
         self.admin_user = get_user_model().objects.create_superuser(
-            username="admin",
-            password="admin1234"
+            username="admin", password="admin1234"
         )
         self.client.force_login(self.admin_user)
         self.redactor = get_user_model().objects.create_user(
-            username="redactor",
-            password="redactor1234",
-            years_of_experience = 1
+            username="redactor", password="redactor1234", years_of_experience=1
         )
         self.topic = Topic.objects.create(name="Test Topic")
         self.newspaper = Newspaper.objects.create(
