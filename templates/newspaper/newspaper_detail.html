@@ -13,3 +13,10 @@
     <p>{{ newspaper.content }}</p>
   </div>
 {% endblock %}
+
+{% block additional %}
+  <div style="text-align: right;">
+    <a href="{% url 'newspaper:newspaper-update' pk=newspaper.id %}">Update this article</a>
+    <a style="color: red" href="{% url 'newspaper:newspaper-delete' pk=newspaper.id %}">Delete this article</a>
+  </div>
+{% endblock %}

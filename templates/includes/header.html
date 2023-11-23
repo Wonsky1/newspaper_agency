@@ -7,8 +7,13 @@
       <a class="blog-header-logo text-dark" href="/">Newspaper agency</a>
     </div>
     <div class="col-4 d-flex justify-content-end align-items-center">
-      <a class="btn btn-sm btn-outline-secondary log-btn" href="#">Login</a>
-      <a class="btn btn-sm btn-outline-secondary log-btn" href="#">Sign up</a>
+      {% if user.is_authenticated %}
+        <span class="text-muted">Hi, <a class="text-muted" href="{% url 'newspaper:redactor-detail' pk=user.id %}">{{ user.username }}</a></span>
+      	<a class="btn btn-sm btn-outline-secondary log-btn" href="{% url 'logout' %}">Logout</a>
+      {% else %}
+      <a class="btn btn-sm btn-outline-secondary log-btn" href="{% url 'login' %}">Login</a>
+      <a class="btn btn-sm btn-outline-secondary log-btn" href="{% url 'newspaper:redactor-create' %}">Sign up</a>
+      {% endif %}
     </div>
   </div>
 </header>
