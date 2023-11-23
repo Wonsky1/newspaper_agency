@@ -1,4 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Topic detail</h1>
+  <h1>Topic {{ topic.name }}</h1>
+{% endblock %}
+
+{% block additional %}
+  <div style="text-align: right;">
+    <a href="{% url 'newspaper:topic-update' pk=topic.id %}">Update this topic</a>
+    <a style="color: red" href="{% url 'newspaper:topic-delete' pk=topic.id %}">Delete this topic</a>
+  </div>
 {% endblock %}

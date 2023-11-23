@@ -1,5 +1,19 @@
 {% extends "base.html" %}
-
 {% block content %}
-	<h1>Topics list view</h1>
+  <h1>Topics:</h1>
+  {% for topic in topic_list %}
+    <div class="btn">
+      <div class="row">
+        <div class="col-md-9">
+          <a class="p-2 text-muted" href="{% url 'newspaper:topic-detail' pk=topic.id %}" class="forum-item-title">{{ topic.name }}</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}
+
+{% block additional %}
+  <div style="text-align: center;">
+    <a style="" href="{% url 'newspaper:topic-create' %}">New topic</a>
+  </div>
 {% endblock %}
