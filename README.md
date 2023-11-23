@@ -69,3 +69,6 @@ Topic:\
 ![image](https://i.imgur.com/DyuP24R.png)\
 Redactor:\
 ![image](https://i.imgur.com/7dM1wtz.png)
+
+To load data use:\
+```python manage.py loaddata db_data.json```
