@@ -54,7 +54,8 @@ class RedactorCreationFormTests(TestCase):
         )
         self.assertFalse(form.is_valid())
         self.assertEqual(
-            form.errors["years_of_experience"], ["Please, provide correct data"]
+            form.errors["years_of_experience"],
+            ["Please, provide correct data"]
         )
 
 
@@ -104,7 +105,8 @@ class RedactorUpdateFormTests(TestCase):
         )
         self.assertFalse(form.is_valid())
         self.assertEqual(
-            form.errors["years_of_experience"], ["Please, provide correct data"]
+            form.errors["years_of_experience"],
+            ["Please, provide correct data"]
         )
 
 
@@ -120,7 +122,8 @@ class NewspaperFormTests(TestCase):
         self.assertFalse(form.is_valid())
         self.assertEqual(
             form.errors["publishers"],
-            ["Select a valid choice. 999 is not one of the available choices."],
+            ["Select a valid choice. "
+             "999 is not one of the available choices."],
         )
 
 

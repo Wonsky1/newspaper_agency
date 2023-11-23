@@ -51,7 +51,6 @@ class PrivateNewspaperTests(TestCase):
         url = reverse("newspaper:newspaper-detail", args=[self.newspaper.id])
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
-        # Add more specific assertions based on your expectations for the detail view
 
     def test_newspaper_create_view(self):
         url = reverse("newspaper:newspaper-create")

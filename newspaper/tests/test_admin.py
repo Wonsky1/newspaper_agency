@@ -21,11 +21,15 @@ class AdminSiteTests(TestCase):
         )
 
     def test_redactor_admin_page(self):
-        response = self.client.get(reverse("admin:newspaper_redactor_changelist"))
+        response = self.client.get(
+            reverse("admin:newspaper_redactor_changelist")
+        )
         self.assertEqual(response.status_code, 200)
 
     def test_newspaper_admin_page(self):
-        response = self.client.get(reverse("admin:newspaper_newspaper_changelist"))
+        response = self.client.get(
+            reverse("admin:newspaper_newspaper_changelist")
+        )
         self.assertEqual(response.status_code, 200)
 
     def test_topic_admin_page(self):
@@ -40,7 +44,10 @@ class AdminSiteTests(TestCase):
         self.assertContains(response, str(self.redactor.years_of_experience))
 
     def test_redactor_detail_years_of_experience_listed(self):
-        url = reverse("admin:newspaper_redactor_change", args=[self.redactor.pk])
+        url = reverse(
+            "admin:newspaper_redactor_change",
+            args=[self.redactor.pk]
+        )
         response = self.client.get(url)
 
         self.assertContains(response, str(self.redactor.years_of_experience))

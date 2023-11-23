@@ -2,8 +2,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
 
-from newspaper.forms import RedactorCreationForm, NewspaperForm, RedactorUpdateForm, TopicSearchForm, \
+from newspaper.forms import (
+    RedactorCreationForm, NewspaperForm,
+    RedactorUpdateForm, TopicSearchForm,
     NewspaperSearchForm, RedactorSearchForm
+)
 from newspaper.models import Newspaper, Redactor, Topic
 
 
@@ -140,5 +143,3 @@ class TopicDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class TopicDetailView(LoginRequiredMixin, generic.DetailView):
     model = Topic
-
-

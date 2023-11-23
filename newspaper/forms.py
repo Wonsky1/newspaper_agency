@@ -16,7 +16,9 @@ class RedactorCreationForm(UserCreationForm):
         )
 
     def clean_years_of_experience(self) -> int:
-        return cleaned_years_of_experience(self.cleaned_data["years_of_experience"])
+        return cleaned_years_of_experience(
+            self.cleaned_data["years_of_experience"]
+        )
 
 
 class RedactorUpdateForm(forms.ModelForm):
@@ -29,12 +31,16 @@ class RedactorUpdateForm(forms.ModelForm):
         )
 
     def clean_years_of_experience(self) -> int:
-        return cleaned_years_of_experience(self.cleaned_data["years_of_experience"])
+        return cleaned_years_of_experience(
+            self.cleaned_data["years_of_experience"]
+        )
 
 
 def cleaned_years_of_experience(years_of_experience) -> int:
     if years_of_experience < 0:
-        raise ValidationError("Years of experience must be greater or equal than 0")
+        raise ValidationError(
+            "Years of experience must be greater or equal than 0"
+        )
     if years_of_experience > 100:
         raise ValidationError("Please, provide correct data")
     return years_of_experience
