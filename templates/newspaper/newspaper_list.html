@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+  {% include "includes/search_form.html" %}
   <div class="row mb-2">
     {% for article in page_obj %}
       <div class="col-md-6">
