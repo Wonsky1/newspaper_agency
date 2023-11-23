@@ -12,8 +12,7 @@ from newspaper.models import Newspaper, Redactor, Topic
 
 class NewspaperListView(generic.ListView):
     model = Newspaper
-    # paginate_by = 6
-    paginate_by = 2
+    paginate_by = 6
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(NewspaperListView, self).get_context_data(**kwargs)
