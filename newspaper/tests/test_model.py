@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 
-from newspaper.models import Topic, Redactor, Newspaper
+from newspaper.models import Topic, Newspaper
 
 
 class ModelTests(TestCase):
@@ -42,4 +42,3 @@ class ModelTests(TestCase):
         )
         self.assertEqual(redactor.years_of_experience, 0)
         self.assertTrue(redactor.check_password(raw_password))
-
