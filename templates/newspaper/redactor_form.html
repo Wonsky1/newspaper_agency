@@ -3,6 +3,7 @@
 {% load crispy_forms_filters %}
 
 {% block content %}
+  {% if user.is_staff or not object %}
   <h1>{{ object|yesno:"Update,Create" }} redactor {{ redactor.username }}</h1>
   <form action="" method="post" novalidate>
     {% csrf_token %}
@@ -11,4 +12,8 @@
     <input type="submit" value="Submit" class="btn btn-primary">
     <a href="{% url 'newspaper:redactor-list' %}" class="btn btn-secondary">Cancel</a>
   </form>
+  {% else %}
+    <h1>You have not permission to update redactor</h1>
+    <a href="{% url 'newspaper:redactor-list' %}">Go back to redactors</a>
+  {% endif %}
 {% endblock %}
