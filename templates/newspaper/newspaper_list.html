@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+  {% include "includes/search_form.html" %}
+  <div class="row mb-2">
+    {% for article in page_obj %}
+      <div class="col-md-6">
+        <div class="card flex-md-row mb-4 box-shadow h-md-250">
+          <div class="card-body d-flex flex-column align-items-start">
+            <strong class="d-inline-block mb-2 text-primary"><a href="{% url 'newspaper:topic-detail' pk=article.topic.id %}">{{ article.topic.name }}</a></strong>
+            <h3 class="mb-0">
+              <a class="text-dark" href="{% url 'newspaper:newspaper-detail' pk=article.id %}">{{ article.title }}</a>
+            </h3>
+            <div class="mb-1 text-muted">{{ article.published_date }}</div>
+            <p class="card-text mb-auto">{{ article.content|slice:":120"  }}...</p>
+            <a href="{% url 'newspaper:newspaper-detail' pk=article.id %}">Continue reading</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
+{% block additional %}
+  <div style="text-align: center;">
+    <a style="" href="{% url 'newspaper:newspaper-create' %}">Post new article</a>
+  </div>
+{% endblock %}

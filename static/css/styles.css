@@ -1,0 +1,39 @@
+.blog-header-logo {
+    font-family: "Playfair Display", Georgia, "Times New Roman", serif;
+    font-size: 2.25rem;
+}
+
+.log-btn {
+    margin-left: 5px;
+}
+
+.blog-footer {
+    padding: 2.5rem 0;
+    color: #999;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: 0.05rem solid #e5e5e5;
+}
+
+header {
+  border-bottom: 2px solid #000; /* You can adjust the width and color as needed */
+  padding: 10px; /* Optional: Add padding to give some space inside the border */
+}
+
+nav {
+    padding-bottom: 30px;
+}
+
+body {
+    display: flex;
+    min-height: 100dvh;
+    flex-direction: column;
+}
+
+.container {
+    flex-grow: 1;
+}
+
+.form-inline {
+    margin-bottom: 10px;
+}

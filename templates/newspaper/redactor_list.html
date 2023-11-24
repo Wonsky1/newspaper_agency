@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% include "includes/search_form.html" %}
+  <h1>Redactors:</h1>
+  {% for redactor in redactor_list %}
+    <div class="btn">
+      <div class="row">
+        <div class="col-md-9">
+          <a class="p-2 text-muted" href="{% url 'newspaper:redactor-detail' pk=redactor.id %}" class="forum-item-title">{{ redactor.username }}</a>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}
