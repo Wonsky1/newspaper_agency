@@ -5,7 +5,6 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ["DJANGO_SECRET_KEY"]
-# "django-insecure-l07-o0&mq8t37=p_5xyp4ws)o^9bl@31ko&mo0-hlz=l+cd-5i")
 
 DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
