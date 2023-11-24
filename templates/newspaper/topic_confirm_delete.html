@@ -1,12 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
-  <h1>Delete topic {{ topic.name }}?</h1>
-  <p>If you delete this topic, all articles related to it will be deleted too!</p>
-  <form action="" method="post">
-    {% csrf_token %}
+  {% if user.is_staff %}
+    <h1>Delete topic {{ topic.name }}?</h1>
+    <p>If you delete this topic, all articles related to it will be deleted too!</p>
+    <form action="" method="post">
+      {% csrf_token %}
 
-    <input type="submit" value="Yes" class="btn btn-danger">
-    <a href="{% url 'newspaper:topic-list' %}" class="btn btn-secondary">Cancel</a>
-
-  </form>
+      <input type="submit" value="Yes" class="btn btn-danger">
+      <a href="{% url 'newspaper:topic-list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+  {% else %}
+    <h1>You have not permission to delete this topic</h1>
+    <a href="{% url 'newspaper:topic-list' %}">Go back to topics</a>
+  {% endif %}
 {% endblock %}
