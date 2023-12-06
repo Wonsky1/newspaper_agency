@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Redactor, Topic, Newspaper
+from django.contrib.auth import get_user_model
+from .models import Topic, Newspaper
 
 
-@admin.register(Redactor)
+@admin.register(get_user_model())
 class RedactorAdmin(UserAdmin):
     list_display = UserAdmin.list_display + ("years_of_experience",)
     fieldsets = UserAdmin.fieldsets + (

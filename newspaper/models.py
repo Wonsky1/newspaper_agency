@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
@@ -25,7 +26,7 @@ class Newspaper(models.Model):
     content = models.TextField()
     published_date = models.DateField(auto_now_add=True)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
-    publishers = models.ManyToManyField(Redactor)
+    publishers = models.ManyToManyField(get_user_model())
 
     class Meta:
         ordering = ("-published_date", )

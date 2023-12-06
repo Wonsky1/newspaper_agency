@@ -3,12 +3,12 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
-from newspaper.models import Redactor, Newspaper
+from newspaper.models import Newspaper
 
 
 class RedactorCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
-        model = Redactor
+        model = get_user_model()
         fields = UserCreationForm.Meta.fields + (
             "years_of_experience",
             "first_name",
@@ -23,7 +23,7 @@ class RedactorCreationForm(UserCreationForm):
 
 class RedactorUpdateForm(forms.ModelForm):
     class Meta:
-        model = Redactor
+        model = get_user_model()
         fields = (
             "years_of_experience",
             "first_name",

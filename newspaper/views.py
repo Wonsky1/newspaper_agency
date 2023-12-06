@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic
@@ -7,7 +8,7 @@ from newspaper.forms import (
     RedactorUpdateForm, TopicSearchForm,
     NewspaperSearchForm, RedactorSearchForm
 )
-from newspaper.models import Newspaper, Redactor, Topic
+from newspaper.models import Newspaper, Topic
 
 
 class NewspaperListView(generic.ListView):
@@ -55,7 +56,7 @@ class NewspaperUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 
 class RedactorListView(generic.ListView):
-    model = Redactor
+    model = get_user_model()
     paginate_by = 10
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -68,7 +69,7 @@ class RedactorListView(generic.ListView):
         return context
 
     def get_queryset(self):
-        queryset = Redactor.objects.all()
+        queryset = get_user_model().objects.all()
 
         form = RedactorSearchForm(self.request.GET)
 
@@ -80,24 +81,24 @@ class RedactorListView(generic.ListView):
 
 
 class RedactorDeleteView(LoginRequiredMixin, generic.DeleteView):
-    model = Redactor
+    model = get_user_model()
     success_url = reverse_lazy("newspaper:redactor-list")
 
 
 class RedactorCreateView(generic.CreateView):
-    model = Redactor
+    model = get_user_model()
     form_class = RedactorCreationForm
     success_url = reverse_lazy("newspaper:redactor-list")
 
 
 class RedactorUpdateView(LoginRequiredMixin, generic.UpdateView):
-    model = Redactor
+    model = get_user_model()
     form_class = RedactorUpdateForm
     success_url = reverse_lazy("newspaper:redactor-list")
 
 
 class RedactorDetailView(LoginRequiredMixin, generic.DetailView):
-    model = Redactor
+    model = get_user_model()
 
 
 class TopicListView(generic.ListView):
