@@ -1,11 +1,18 @@
-## Newspaper agency 
+# Newspaper agency 
 Newspaper agency example, made in Django, a website with custom styles.
 
+## Deployed project could be found here:
+[Deployed project](https://newspaper-mate-21bb.onrender.com)
+
+User credentials:
+- login: 
+```user```
+- password: 
+```user12345```
 
 
 Diagram:\
 ![image](https://i.imgur.com/6r4Ioo2.png)
-
 
 
 ## How to install
@@ -85,6 +92,3 @@ Pages images:
 
 5. Delete Views:
 ![image](https://i.imgur.com/1vh1ZD9.png)
-
-To load data use:\
-```python manage.py loaddata db_data.json```
