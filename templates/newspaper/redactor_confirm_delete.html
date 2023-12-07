@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  {% if user.is_staff %}
+    <h1>Delete redactor {{ redactor.username }}?</h1>
+    <form action="" method="post">
+      {% csrf_token %}
+
+      <input type="submit" value="Yes" class="btn btn-danger">
+      <a href="{% url 'newspaper:topic-list' %}" class="btn btn-secondary">Cancel</a>
+
+    </form>
+  {% else %}
+    <h1>You have not permission to delete this redactor</h1>
+    <a href="{% url 'newspaper:redactor-list' %}">Go back to redactors</a>
+  {% endif %}
+{% endblock %}
