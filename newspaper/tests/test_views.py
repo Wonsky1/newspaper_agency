@@ -138,11 +138,13 @@ class PrivateNewspaperTests(TestCase):
 
 
 class TopicTests(TestCase):
+    TOPIC_LIST_URL = "newspaper:topic-list"
+
     def test_retrieve_topic_list(self):
         Topic.objects.create(name="test_topic1")
         Topic.objects.create(name="test_topic2")
 
-        response = self.client.get(reverse("newspaper:topic-list"))
+        response = self.client.get(reverse(self.TOPIC_LIST_URL))
 
         topics = Topic.objects.all()
 
@@ -154,7 +156,7 @@ class TopicTests(TestCase):
         Topic.objects.create(name="test_topic")
         Topic.objects.create(name="Science")
         response = self.client.get(
-            reverse("newspaper:topic-list"), {"name": "test_topic"}
+            reverse(self.TOPIC_LIST_URL), {"name": "test_topic"}
         )
         self.assertEqual(response.status_code, 200)
         self.assertEqual(
